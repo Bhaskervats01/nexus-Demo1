@@ -1,0 +1,201 @@
+/* General Body Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #3f0ede, #2575fc);
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex; 
+    justify-content: space-around; 
+    align-items: center; 
+    color: white;
+}
+
+/* Player Containers - Styles */
+#player1, #player2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease; /* Add transition for smooth effect */
+    border: 3px solid transparent; /* Base border */
+}
+
+/* --- New Active Player Highlight --- */
+/* Player X (id="player2") is initially NOT active */
+#player2 {
+    opacity: 0.5;
+    transform: scale(0.95);
+}
+
+/* Player O (id="player1") is initially active since 'O' starts */
+#player1.active-player {
+    border-color: #ffc107; /* Bright yellow border for active player */
+    box-shadow: 0 0 20px rgba(255, 193, 7, 0.8);
+    opacity: 1;
+    transform: scale(1.0);
+}
+
+/* Player X becomes active */
+#player2.active-player {
+    border-color: yellow; /* Cyan border for active player */
+    box-shadow: 0 0 20px rgba(23, 162, 184, 0.8);
+    opacity: 1;
+    transform: scale(1.0);
+}
+/* ---------------------------------- */
+
+
+#player1 img, #player2 img {
+    width: 25vw;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid white;
+}
+
+/* Container Styles (for the Tic Tac Toe board itself) */
+.container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 20px; 
+}
+
+/* Header Styling */
+h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Board Styles */
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 120px);
+    grid-template-rows: repeat(3, 120px);
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+/* Individual Cells */
+.cell {
+    width: 120px;
+    height: 120px;
+    background-color: #fff;
+    border: 2px solid gold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    font-weight: bold;
+    color: #333;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cell:hover {
+    background-color: #f0f0f0;
+}
+
+.cell.taken {
+    pointer-events: none;
+    color: #555;
+}
+
+.winning-message {
+    font-size: 1.5rem;
+    margin-top: 20px;
+    color: #333;
+}
+
+/* Restart Button */
+button {
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: blue;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Specific button styles for player indicators */
+#player1 button, #player2 button {
+    background-color: red;
+}
+
+#player1 button:hover, #player2 button:hover {
+    background-color: #0056b3;
+}
+
+
+/* Responsive Styles */
+@media (max-width: 900px) { 
+    body {
+        flex-direction: column; 
+        justify-content: flex-start; 
+        padding: 20px 0;
+        height: auto; 
+    }
+
+    #player1, #player2, .container {
+        margin-bottom: 20px; 
+    }
+
+    .board {
+        grid-template-columns: repeat(3, 100px);
+        grid-template-rows: repeat(3, 100px);
+    }
+
+    .cell {
+        width: 100px;
+        height: 100px;
+        font-size: 4rem; 
+    }
+
+    button {
+        font-size: 1rem;
+        padding: 10px 15px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .container {
+        width: 90%; 
+        padding: 20px;
+    }
+    #player1 img, #player2 img {
+        width: 80px;
+        height: 80px;
+    }
+    #player1 button, #player2 button {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+    }
+}
